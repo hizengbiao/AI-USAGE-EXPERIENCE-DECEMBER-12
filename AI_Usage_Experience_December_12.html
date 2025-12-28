@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025年12月 · 月度回顾</title>
+    <style>
+        :root {
+            --bg-color: #0f1115;
+            --card-bg: #1e2128;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent-blue: #3b82f6;
+            --accent-purple: #8b5cf6;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --glass: rgba(30, 33, 40, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            animation: fadeIn 1s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--accent-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .date {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* TL;DR Section */
+        .tldr {
+            background: rgba(59, 130, 246, 0.1);
+            border-left: 4px solid var(--accent-blue);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        .tldr h3 {
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Card Layout */
+        .section-title {
+            font-size: 1.5rem;
+            margin: 40px 0 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.2s;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,0.1);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .tag-pro { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
+        .tag-vs { background: rgba(239, 68, 68, 0.2); color: var(--accent-red); }
+        .tag-win { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
+        .tag-art { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
+
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent-blue);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        strong {
+            color: var(--text-primary);
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .full-width {
+                grid-column: span 2;
+            }
+        }
+
+        /* Insights Highlight */
+        .insight-box {
+            background: linear-gradient(145deg, #1e2128, #252830);
+            border-left: 4px solid var(--accent-purple);
+        }
+
+        .insight-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 0;
+            color: #4b5563;
+            font-size: 0.8rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>12月 · 月度回顾</h1>
+        <div class="date">2025 | Technologist Review</div>
+    </header>
+
+    <div class="tldr">
+        <h3>TL;DR</h3>
+        <p>本月除了养鸟陶冶情操，重点在于深度体验了 AI 的爆发式进步。代码方面 <strong>GPT-5.2</strong> 依然是王者；多模态和生态上 <strong>Gemini 3 Pro</strong> 遥遥领先；绘图方面 <strong>Nano Banana</strong> 的出现彻底淘汰了繁琐的本地 SD 工作流。此外，尝试了 AntiGravity + Supabase 的新开发栈，并被 AI 自动纠错能力深深震撼。</p>
+    </div>
+
+    <div class="card">
+        <span class="tag tag-win">Lifestyle</span>
+        <h3>🐦 生活点滴</h3>
+        <ul>
+            <li>养了几只小鸟，给纯技术生活增添了一些生趣。</li>
+        </ul>
+    </div>
+
+    <h2 class="section-title">🤖 AI 深度评测：神仙打架</h2>
+    
+    <div class="comparison-grid">
+        <div class="card">
+            <span class="tag tag-vs">代码能力</span>
+            <h3>GPT-5.2 胜出 👑</h3>
+            <ul>
+                <li><strong>现状：</strong> 无论是日常 Java/Python 开发，还是 AutoHotkey 脚本，GPT-5.2 的逻辑和准确率都更高。</li>
+                <li><strong>对比：</strong> Gemini 3 Pro 刚出时觉得很强，但 GPT-5.2 一出，差距立马显现。从内测到 2.5 Pro 时期，Gemini 在纯代码对抗上一直稍逊一筹。</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <span class="tag tag-pro">多模态 & 生态</span>
+            <h3>Gemini 3 Pro 遥遥领先 🚀</h3>
+            <ul>
+                <li><strong>全能输入：</strong> 扔给它一个网页或视频，迅速生成精美总结。</li>
+                <li><strong>NoteBookLM：</strong> 学习神器。杂乱资料自动整理成笔记、幻灯片、测验。</li>
+                <li><strong>Gems：</strong> 一句话生成应用。比如“汇总本周 AI 亮点的应用”，立等可取。</li>
+            </ul>
+        </div>
+
+        <div class="card full-width">
+            <span class="tag tag-art">图像能力</span>
+            <h3>Nano Banana (本地模型已死) 🎨</h3>
+            <ul>
+                <li><strong>降维打击：</strong> 以前攒了 1T 的 SD/ComfyUI 模型全删了。</li>
+                <li><strong>自然语言交互：</strong> 大白话出神图。代码转流程图、表情包、漫画上色统统搞定。</li>
+                <li><strong>因果律细节：</strong> 漫画分镜中路人的逻辑连贯；火柴人骨架控制照片 Pose。</li>
+                <li><strong>中文生成：</strong> 以前 Flux 能写对中文就不错，现在长句一字不错是基操。</li>
+            </ul>
+        </div>
+    </div>
+
+    <h2 class="section-title">🛠️ 技术栈与心得</h2>
+
+    <div class="card">
+        <span class="tag tag-pro">Dev Stack</span>
+        <h3>新尝试</h3>
+        <ul>
+            <li><strong>渠道：</strong> 使用 <strong>i10x</strong>，GPT-5.2 发布当天无缝接入。</li>
+            <li><strong>部署：</strong> AntiGravity + Github Pages，或配合 Supabase 全栈部署。</li>
+        </ul>
+    </div>
+
+    <div class="comparison-grid">
+        <div class="card insight-box">
+            <h3>🧠 Context Awareness</h3>
+            <p class="insight-quote">“以前 OCR 遇到模糊字符容易乱码，现在 Gemini 能通过上下文理解自动纠正，阅读体验极佳。”</p>
+        </div>
+
+        <div class="card insight-box">
+            <h3>⚡ 逻辑纠错 (最惊艳)</h3>
+            <p class="insight-quote">“我描述错了接口参数，AI 没有将错就错，而是直接指出矛盾点：‘你应该想要的是 X’。这种带脑子的感觉非常真实。”</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Generated by Gemini | 2025 Monthly Review</p>
+    </footer>
+</div>
+
+</body>
+</html>
