@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -91,12 +92,12 @@
             margin-bottom: 20px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
             transition: transform 0.2s;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .card:hover {
             transform: translateY(-2px);
-            border-color: rgba(255,255,255,0.1);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .card h3 {
@@ -114,10 +115,25 @@
             margin-bottom: 10px;
         }
 
-        .tag-pro { background: rgba(59, 130, 246, 0.2); color: var(--accent-blue); }
-        .tag-vs { background: rgba(239, 68, 68, 0.2); color: var(--accent-red); }
-        .tag-win { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
-        .tag-art { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
+        .tag-pro {
+            background: rgba(59, 130, 246, 0.2);
+            color: var(--accent-blue);
+        }
+
+        .tag-vs {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--accent-red);
+        }
+
+        .tag-win {
+            background: rgba(16, 185, 129, 0.2);
+            color: var(--accent-green);
+        }
+
+        .tag-art {
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--accent-purple);
+        }
 
         ul {
             list-style-type: none;
@@ -153,6 +169,7 @@
             .comparison-grid {
                 grid-template-columns: 1fr 1fr;
             }
+
             .full-width {
                 grid-column: span 2;
             }
@@ -178,93 +195,403 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Nano Banana Gallery Styles */
+        .gallery-category {
+            margin-bottom: 40px;
+        }
+
+        .gallery-category h3 {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 3px solid var(--accent-blue);
+        }
+
+        .gallery-grid {
+            display: grid;
+            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        /* Specific layouts */
+        .grid-cols-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-cols-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .full-width-img {
+            grid-column: 1 / -1;
+        }
+
+        .gallery-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            border-color: var(--accent-blue);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 8px 12px;
+            font-size: 0.85rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+
+        /* Lightbox Styles */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        #lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        #lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            cursor: zoom-out;
+        }
+
+        #lightbox.active img {
+            transform: scale(1);
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            padding: 0;
+            width: 50px;
+            height: 50px;
+            font-size: 2rem;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .gallery-item img {
+            cursor: zoom-in;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <header>
-        <h1>12月 · 月度回顾</h1>
-        <div class="date">2025 | Technologist Review</div>
-    </header>
+    <div class="container">
+        <header>
+            <h1>12月 · 月度回顾</h1>
+            <div class="date">2025 | Technologist Review</div>
+        </header>
 
-    <div class="tldr">
-        <h3>TL;DR</h3>
-        <p>本月除了养鸟陶冶情操，重点在于深度体验了 AI 的爆发式进步。代码方面 <strong>GPT-5.2</strong> 依然是王者；多模态和生态上 <strong>Gemini 3 Pro</strong> 遥遥领先；绘图方面 <strong>Nano Banana</strong> 的出现彻底淘汰了繁琐的本地 SD 工作流。此外，尝试了 AntiGravity + Supabase 的新开发栈，并被 AI 自动纠错能力深深震撼。</p>
-    </div>
-
-    <div class="card">
-        <span class="tag tag-win">Lifestyle</span>
-        <h3>🐦 生活点滴</h3>
-        <ul>
-            <li>养了几只小鸟，给纯技术生活增添了一些生趣。</li>
-        </ul>
-    </div>
-
-    <h2 class="section-title">🤖 AI 深度评测：神仙打架</h2>
-    
-    <div class="comparison-grid">
-        <div class="card">
-            <span class="tag tag-vs">代码能力</span>
-            <h3>GPT-5.2 胜出 👑</h3>
-            <ul>
-                <li><strong>现状：</strong> 无论是日常 Java/Python 开发，还是 AutoHotkey 脚本，GPT-5.2 的逻辑和准确率都更高。</li>
-                <li><strong>对比：</strong> Gemini 3 Pro 刚出时觉得很强，但 GPT-5.2 一出，差距立马显现。从内测到 2.5 Pro 时期，Gemini 在纯代码对抗上一直稍逊一筹。</li>
-            </ul>
+        <div class="tldr">
+            <h3>TL;DR</h3>
+            <p>本月除了养鸟陶冶情操，重点在于深度体验了 AI 的爆发式进步。代码方面 <strong>GPT-5.2</strong> 依然是王者；多模态和生态上 <strong>Gemini 3 Pro</strong>
+                遥遥领先；绘图方面 <strong>Nano Banana</strong> 的出现彻底淘汰了繁琐的本地 SD/ComfyUI 工作流。此外，尝试了 AntiGravity + Supabase
+                的新开发栈，并被 AI
+                自动纠错能力深深震撼。</p>
         </div>
 
         <div class="card">
-            <span class="tag tag-pro">多模态 & 生态</span>
-            <h3>Gemini 3 Pro 遥遥领先 🚀</h3>
+            <span class="tag tag-win">Lifestyle</span>
+            <h3>🐦 生活点滴</h3>
             <ul>
-                <li><strong>全能输入：</strong> 扔给它一个网页或视频，迅速生成精美总结。</li>
-                <li><strong>NoteBookLM：</strong> 学习神器。杂乱资料自动整理成笔记、幻灯片、测验。</li>
-                <li><strong>Gems：</strong> 一句话生成应用。比如“汇总本周 AI 亮点的应用”，立等可取。</li>
+                <li>养了几只小鸟，给纯技术生活增添了一些生趣。</li>
             </ul>
         </div>
 
-        <div class="card full-width">
-            <span class="tag tag-art">图像能力</span>
-            <h3>Nano Banana (本地模型已死) 🎨</h3>
+        <h2 class="section-title">🤖 AI 深度评测：神仙打架</h2>
+
+        <div class="comparison-grid">
+            <div class="card">
+                <span class="tag tag-vs">代码能力</span>
+                <h3>GPT-5.2 胜出 👑</h3>
+                <ul>
+                    <li><strong>现状：</strong> 无论是日常 Java/Python 开发，还是 AutoHotkey 脚本，GPT-5.2 的逻辑和准确率都更高。</li>
+                    <li><strong>对比：</strong> Gemini 3 Pro 刚出时觉得很强，但 GPT-5.2 一出，差距立马显现。从内测到 2.5 Pro 时期，Gemini
+                        在纯代码对抗上一直稍逊一筹。</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="tag tag-pro">多模态 & 生态</span>
+                <h3>Gemini 3 Pro 遥遥领先 🚀</h3>
+                <ul>
+                    <li><strong>全能输入：</strong> 支持视频、各类文档、网页链接等几乎所有格式。扔给它一个网页或视频，能迅速生成精美的总结报告。</li>
+                    <li><strong>NoteBookLM：</strong> 学习神器。上传文件、录音、涂鸦等杂乱资料，自动整理成笔记、重点、幻灯片，针对资料问问题，甚至能出题测验。</li>
+                    <li><strong>Gems：</strong> 一句话生成应用。比如“汇总本周 AI 亮点和未来趋势的应用”，立等可取。</li>
+                    <li><strong>回顾：</strong> Gemini 从内测阶段到 2.5 Pro 发布前，在纯代码能力的对比中整体一直略逊一筹；但 2.5 Pro 与 3.0 Pro
+                        的发布，确实带来了里程碑式的提升，差距被显著缩小，甚至在部分场景开始体现出独特优势。</li>
+                </ul>
+            </div>
+
+            <div class="card full-width">
+                <span class="tag tag-art">图像能力</span>
+                <h3>Nano Banana王者归来 (本地模型已死) 🎨</h3>
+                <ul>
+                    <li><strong>降维打击：</strong> 以前用 StableDiffusion WebUI、ComfyUI，要训练模型、搭工作流、配环境，攒了 1T 多的硬盘垃圾。现在有了 Nano
+                        Banana，全删了。</li>
+                    <li><strong>自然语言交互：</strong> 大白话出神图。不仅听得懂，还能精准执行。代码转流程图、表情包、漫画生成/翻译/上色统统搞定。</li>
+                    <li><strong>因果律细节：</strong> 漫画绘制中，不起眼的路人在不同分镜下能保持逻辑连贯；甚至随便画个人体结构线条，就能让照片中的人物按结构摆 Pose。</li>
+                    <li><strong>中文生成：</strong> 以前 Flux 能在图中生成正确英文单词就觉得牛，现在Nano Banana生成中文长句一字不错已是基操。</li>
+                </ul>
+            </div>
+        </div>
+
+        <h2 class="section-title">🍌 Nano Banana Pro 成品展示</h2>
+
+        <div class="card">
+            <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                Nano Banana Pro 在多个领域展现了惊人的生成能力，从产品设计到学术辅助，再到艺术创作，彻底改变了工作流。
+            </p>
+
+            <!-- Category: Product Design -->
+            <div class="gallery-category">
+                <h3>🏗️ 产品建设主题海报生成</h3>
+                <div class="gallery-grid grid-cols-3">
+                    <div class="gallery-item">
+                        <img src="产品建设主题生成1.jpg" alt="产品建设主题 1" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="产品建设主题生成2.jpg" alt="产品建设主题 2" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="产品建设主题生成3.jpg" alt="产品建设主题 3" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category: Academic/Thesis -->
+            <div class="gallery-category">
+                <h3>🎓 分析论文核心内容生成板书</h3>
+                <div class="gallery-grid grid-cols-2">
+                    <div class="gallery-item">
+                        <img src="论文主要内容生成板书1.jpg" alt="论文板书 1" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="论文主要内容生成板书2.jpg" alt="论文板书 2" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category: Style Transfer -->
+            <div class="gallery-category">
+                <h3>🎨 照片风格迁移</h3>
+                <div class="gallery-grid grid-cols-2">
+                    <div class="gallery-item">
+                        <img src="风格迁移1.jpg" alt="风格迁移 1" loading="lazy">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="风格迁移2.jpg" alt="风格迁移 2" loading="lazy">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category: Posters & Emojis -->
+            <div class="gallery-category">
+                <h3>🖼️ 动漫海报生成 & 批量制作表情包</h3>
+                <div class="gallery-grid grid-cols-2">
+                    <div class="gallery-item">
+                        <img src="动漫主题海报.jpg" alt="动漫主题海报" loading="lazy">
+                        <div class="gallery-caption">动漫主题海报</div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="表情包生成.jpg" alt="表情包生成" loading="lazy">
+                        <div class="gallery-caption">表情包生成</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category: Flowchart -->
+            <div class="gallery-category">
+                <h3>📊 伪代码生成流程图</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item full-width-img">
+                        <img src="流程图生成.png" alt="流程图生成" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <h2 class="section-title">🛠️ 技术栈与心得</h2>
+
+        <div class="card">
+            <span class="tag tag-pro">Dev Stack</span>
+            <h3>新尝试</h3>
             <ul>
-                <li><strong>降维打击：</strong> 以前攒了 1T 的 SD/ComfyUI 模型全删了。</li>
-                <li><strong>自然语言交互：</strong> 大白话出神图。代码转流程图、表情包、漫画上色统统搞定。</li>
-                <li><strong>因果律细节：</strong> 漫画分镜中路人的逻辑连贯；火柴人骨架控制照片 Pose。</li>
-                <li><strong>中文生成：</strong> 以前 Flux 能写对中文就不错，现在长句一字不错是基操。</li>
+                <li><strong>渠道：</strong> 订阅 <strong>i10x</strong>，在 GPT-5.2 发布的当天就能无缝接入使用。</li>
+                <li><strong>部署：</strong> AntiGravity + Github Pages，或配合 Supabase 全栈部署DEMO。</li>
             </ul>
         </div>
-    </div>
 
-    <h2 class="section-title">🛠️ 技术栈与心得</h2>
+        <div class="comparison-grid">
+            <div class="card insight-box">
+                <h3>🧠 Context Awareness</h3>
+                <p class="insight-quote">“以前 OCR 遇到模糊或相似字符容易识别错误，现在 Gemini 能通过上下文理解自动纠正字符错误，文字识别能力极佳。”</p>
+            </div>
 
-    <div class="card">
-        <span class="tag tag-pro">Dev Stack</span>
-        <h3>新尝试</h3>
-        <ul>
-            <li><strong>渠道：</strong> 使用 <strong>i10x</strong>，GPT-5.2 发布当天无缝接入。</li>
-            <li><strong>部署：</strong> AntiGravity + Github Pages，或配合 Supabase 全栈部署。</li>
-        </ul>
-    </div>
-
-    <div class="comparison-grid">
-        <div class="card insight-box">
-            <h3>🧠 Context Awareness</h3>
-            <p class="insight-quote">“以前 OCR 遇到模糊字符容易乱码，现在 Gemini 能通过上下文理解自动纠正，阅读体验极佳。”</p>
+            <div class="card insight-box">
+                <h3>⚡ 逻辑纠错 (最惊艳)</h3>
+                <p class="insight-quote">“在写需求时，我描述错了几个接口和参数，自己都没发现。AI 没有“将错就错”或者胡编乱造，而是直接指出矛盾点，并结合上下文分析出“你应该想要的是
+                    X”，然后基于正确的逻辑生成代码。这种“带脑子”的感觉非常真实。”</p>
+            </div>
         </div>
 
-        <div class="card insight-box">
-            <h3>⚡ 逻辑纠错 (最惊艳)</h3>
-            <p class="insight-quote">“我描述错了接口参数，AI 没有将错就错，而是直接指出矛盾点：‘你应该想要的是 X’。这种带脑子的感觉非常真实。”</p>
-        </div>
+        <footer>
+            <p>Generated by Gemini | 2025 Monthly Review</p>
+        </footer>
     </div>
 
-    <footer>
-        <p>Generated by Gemini | 2025 Monthly Review</p>
-    </footer>
-</div>
+    <div id="lightbox">
+        <button class="nav-btn prev" aria-label="Previous image">❮</button>
+        <img src="" alt="Full screen preview">
+        <button class="nav-btn next" aria-label="Next image">❯</button>
+    </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+            const galleryImages = Array.from(document.querySelectorAll('.gallery-item img'));
+            const prevBtn = lightbox.querySelector('.prev');
+            const nextBtn = lightbox.querySelector('.next');
+
+            let currentIndex = 0;
+
+            function showImage(index) {
+                // Circular navigation
+                if (index >= galleryImages.length) index = 0;
+                if (index < 0) index = galleryImages.length - 1;
+
+                currentIndex = index;
+                lightboxImg.src = galleryImages[currentIndex].src;
+            }
+
+            galleryImages.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    showImage(index);
+                    lightbox.classList.add('active');
+                });
+            });
+
+            // Navigation buttons
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent lightbox closing
+                showImage(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent lightbox closing
+                showImage(currentIndex + 1);
+            });
+
+            // Close logic
+            lightbox.addEventListener('click', (e) => {
+                if (e.target !== prevBtn && e.target !== nextBtn) {
+                    lightbox.classList.remove('active');
+                }
+            });
+
+            // Image click closes it (zoom-out effect)
+            lightboxImg.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+
+                if (e.key === 'Escape') lightbox.classList.remove('active');
+                if (e.key === 'ArrowLeft') showImage(currentIndex - 1);
+                if (e.key === 'ArrowRight') showImage(currentIndex + 1);
+            });
+        });
+    </script>
 </body>
+
 </html>
